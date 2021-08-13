@@ -3,16 +3,7 @@ const multer = require('multer');
 const mongoose = require('mongoose')
 const csv = require('csv-parser')
 const fs = require('fs');
-// passport.use(new BasicStrategy(
-//     function(username, password, done) {
-//       User.findOne({ username: username }, function (err, user) {
-//         if (err) { return done(err); }
-//         if (!user) { return done(null, false); }
-//         if (!user.validPassword(password)) { return done(null, false); }
-//         return done(null, user);
-//       });
-//     }
-//   ));
+
 let fileName = '';
 const results = [];
 const storage = multer.diskStorage({
@@ -42,13 +33,7 @@ mongoose.connect(
   useCreateIndex: true,
   useUnifiedTopology: true
 });
-// mongoose.connect(
-//     'mongodb://localhost:27017/userDB'
-//     , {
-//       useNewUrlParser: true,
-//       useCreateIndex: true,
-//       useUnifiedTopology: true
-//     });
+
 const fileSchema = {
   SerialNumber:String,
   CompanyName:String,
@@ -61,7 +46,7 @@ const fileSchema = {
 
 const File = mongoose.model('File',fileSchema)
 
-app.post('/',upload.single('image'), (req, res) => {
+app.post('/',upload.single('fileUpload'), (req, res) => {
 fs.createReadStream(__dirname+'/public/upload'+'/' + fileName)
   .pipe(csv())
   .on('data', (data) => results.push(data))

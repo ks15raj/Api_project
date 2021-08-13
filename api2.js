@@ -21,6 +21,23 @@ const fileSchema = {
   
   
   const File = mongoose.model('File',fileSchema)
+  app.post('/csv', (req, res) => {
+    const newFile = new File({
+        SerialNumber:item.Serial_Number,
+        CompanyName:item.Company_Name,
+        EmployeeMarkme:item.Employee_Markme,
+        Description:item.Description,
+        Leave:item.Leave
+       
+      })
+      newFile.save(function(err){
+          if(!err){
+              res.send('New Data has been added')
+          }else{
+              res.send('There is an error')
+          }
+      })
+  });
 app.route('/csv/:serial')
     .get((req,res)=>{
     const data = req.params.serial

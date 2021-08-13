@@ -1,0 +1,50 @@
+How to use the api:
+1-Unzip the file and Download all dependencies;
+2-Run MongoDb for database conection;
+3-Run Nodemon api.js for uploding csv file;
+4-Open Postmon and post a request to localhost:3000/ with form data set key as fileUpload and its value as file in zip naming sample1000.csv;
+5-click send , it will post request to server , and database will be created;
+6-Terminate Nodemon with ctrl+c when done;
+////CRUD///
+
+How to perform crud:
+1- Run Command nodemon api2.js;
+2-Now goto postman and post CRUD operation on url localhost:3000/csv/{serial no.}, where serial no. is identity of entry to Be perform crud on;
+ 
+-> HOw to get all data in data base:
+----Request a get request on url : localhost:3000/csv/
+----It will list all documents.
+
+
+->How to get particular data
+----Request a get request on url : localhost:3000/csv/{serial no.}  (serial no. of data u want to search)
+----It will send you a entry matching serial no.
+
+-->How to Add a new entry
+-----Request a post request on url: localhost:3000/csv/  , with data filled in body url-encoding
+      with keys---  
+        SerialNumber,
+        CompanyName,
+        EmployeeMarkme,
+        Description,
+        Leave
+----The field will be added.
+
+-->How to update fields keys and values
+----create a put request on url:localhost:3000/csv/{serial no.}  (serial no. of data u want to search) with body filled with required data it will be updated
+
+--->How to update a particular value of the database
+-----Create a patch request on url : localhost:3000/csv/{serial no.}  (serial no. of data u want to search)
+-----Add field you want to update, it will be updated
+
+---> How to delete a particular entry
+----Create a delete request on url : localhost:3000/csv/{serial no.}  (serial no. of data u want to search)
+---- It will delete that entry from database
+
+----> How to erase entire database
+------Create a delete request on url : localhost:3000/csv/all
+------It will clear your database .
+
+
+
+thank you .
